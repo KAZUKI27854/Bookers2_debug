@@ -1,8 +1,6 @@
 class BooksController < ApplicationController
-
   def show
     @book = Book.find(params[:id])
-    #add
     @user = User.find_by(id: @book.user.id)
     @new_book = Book.new
   end
@@ -10,7 +8,6 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
     @book = Book.new
-    #add
     @user = current_user
   end
 
@@ -33,8 +30,6 @@ class BooksController < ApplicationController
     end
   end
 
-
-
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
@@ -55,5 +50,4 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
-
 end
